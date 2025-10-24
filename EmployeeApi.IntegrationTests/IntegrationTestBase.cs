@@ -7,14 +7,14 @@
         protected HttpClient Client;
 
         [TestInitialize]
-        public void ClassInit()
+        public void Init()
         {
             Factory = new CustomWebApplicationFactory();
             Client = Factory.CreateClient();
         }
 
         [TestCleanup]
-        public  void ClassCleanup()
+        public  void Cleanup()
         {
             Client?.Dispose();
             Factory?.Dispose();
