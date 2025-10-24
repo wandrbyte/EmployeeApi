@@ -21,7 +21,7 @@ namespace EmployeeApi.IntegrationTests
                 var connection = new SqliteConnection("DataSource=:memory:");
                 connection.Open();
 
-                
+
                 services.AddDbContext<AppDbContext>(options =>
                 {
                     options.UseSqlite(connection);

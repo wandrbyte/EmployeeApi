@@ -134,12 +134,12 @@ namespace EmployeeApi.IntegrationTests
             var getResponse = await Client.GetAsync($"api/employee/{emp.Id}");
 
             Assert.AreEqual(HttpStatusCode.NoContent, response.StatusCode);
-            Assert.AreEqual(HttpStatusCode.NotFound , getResponse.StatusCode);
+            Assert.AreEqual(HttpStatusCode.NotFound, getResponse.StatusCode);
         }
 
         private async Task<Employee> CreateEmployeeAsync(string name = "TestUser")
         {
-            var emp = new Employee { Name = name, DateOfBirth =  _defaultDob};
+            var emp = new Employee { Name = name, DateOfBirth = _defaultDob };
             var response = await Client.PostAsJsonAsync("/api/employees", emp);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadFromJsonAsync<Employee>();

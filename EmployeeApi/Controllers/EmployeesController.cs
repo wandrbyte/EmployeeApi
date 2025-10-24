@@ -46,7 +46,7 @@ namespace EmployeeApi.Controllers
             }
 
             var employee = await _employeeRepository.Create(employeeRequest);
-            
+
             return CreatedAtAction(nameof(GetEmployee), new { Id = employee.Id }, employee);
         }
 
@@ -54,7 +54,7 @@ namespace EmployeeApi.Controllers
         public async Task<IActionResult> UpdateEmployee(int id, EmployeeRequest employeeRequest)
         {
             var employee = await _employeeRepository.GetById(id);
-            if(employee is null) return NotFound();
+            if (employee is null) return NotFound();
 
             if (!_employeeValidator.IsValidEmployee(employeeRequest))
             {

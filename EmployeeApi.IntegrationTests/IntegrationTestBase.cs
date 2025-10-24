@@ -14,7 +14,7 @@
         }
 
         [TestCleanup]
-        public  void Cleanup()
+        public void Cleanup()
         {
             Client?.Dispose();
             Factory?.Dispose();

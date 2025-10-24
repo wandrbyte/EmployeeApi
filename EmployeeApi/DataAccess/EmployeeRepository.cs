@@ -11,7 +11,7 @@ namespace EmployeeApi.DataAccess
         {
             _context = context;
         }
-        
+
 
         public async Task<IEnumerable<Employee>> GetAll(int top, int skip)
         {

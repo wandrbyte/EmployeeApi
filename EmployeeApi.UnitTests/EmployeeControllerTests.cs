@@ -89,7 +89,7 @@ namespace EmployeeApi.UnitTests
             mockValidator.Setup(v => v.IsValidEmployee(It.IsAny<EmployeeRequest>())).Returns(false);
             var controller = new EmployeesController(mockRepo.Object, mockValidator.Object);
 
-            var result = await controller.CreateEmployee(new EmployeeRequest { Name = "Test", DateOfBirth = DateOnly.MaxValue});
+            var result = await controller.CreateEmployee(new EmployeeRequest { Name = "Test", DateOfBirth = DateOnly.MaxValue });
 
             Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
         }
@@ -110,9 +110,10 @@ namespace EmployeeApi.UnitTests
 
             var controller = new EmployeesController(mockRepo.Object, mockValidator.Object);
 
-            var result = await controller.CreateEmployee(new EmployeeRequest { 
-                Name = employee.Name, 
-                DateOfBirth = employee.DateOfBirth 
+            var result = await controller.CreateEmployee(new EmployeeRequest
+            {
+                Name = employee.Name,
+                DateOfBirth = employee.DateOfBirth
             });
 
             Assert.IsInstanceOfType(result, typeof(CreatedAtActionResult));
