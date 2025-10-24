@@ -1,5 +1,4 @@
 ﻿using EmployeeApi.Models;
-using Microsoft.AspNetCore.Identity;
 using System.Net;
 using System.Net.Http.Json;
 
