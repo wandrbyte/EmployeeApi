@@ -7,7 +7,7 @@ namespace EmployeeApi.IntegrationTests
     [TestClass]
     public sealed class EmployeeApiTests : IntegrationTestBase
     {
-        private DateOnly _defaultDob = DateOnly.FromDateTime(DateTime.Today).AddYears(-20);
+        private readonly DateOnly _defaultDob = DateOnly.FromDateTime(DateTime.Today).AddYears(-20);
 
         [TestMethod]
         public async Task GetEmployeeById_ReturnsNull_WhenEmployeeDoesntExist()
@@ -37,7 +37,7 @@ namespace EmployeeApi.IntegrationTests
             var response = await Client.GetFromJsonAsync<List<Employee>>("api/employees");
 
             Assert.IsNotNull(response);
-            Assert.IsTrue(response.Count > 0);
+            Assert.IsTrue(response.Count == 0); //breaking tests to check for CI
         }
 
         [TestMethod]
