@@ -13,8 +13,8 @@
             Client = Factory.CreateClient();
         }
 
-        [ClassCleanup(ClassCleanupBehavior.EndOfClass)]
-        public static void Cleanup()
+        [ClassCleanup(InheritanceBehavior.BeforeEachDerivedClass, ClassCleanupBehavior.EndOfClass)]
+        public static void ClassCleanup()
         {
             Client?.Dispose();
             Factory?.Dispose();
