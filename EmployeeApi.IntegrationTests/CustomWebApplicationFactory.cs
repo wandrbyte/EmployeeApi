@@ -1,7 +1,6 @@
 ﻿using EmployeeApi.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,21 +17,17 @@ namespace EmployeeApi.IntegrationTests
                 if (descriptor != null)
                     services.Remove(descriptor);
 
-                var connection = new SqliteConnection("DataSource=:memory:");
-                connection.Open();
-
+               
 
                 services.AddDbContext<AppDbContext>(options =>
                 {
-                    options.UseSqlite(connection);
+                    options.UseInMemoryDatabase("memory");
                 });
 
                 // Ensure database is created
                 var sp = services.BuildServiceProvider();
                 using var scope = sp.CreateScope();
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                db.Database.OpenConnection();
-                db.Database.Migrate();
+                
             });
         }
 

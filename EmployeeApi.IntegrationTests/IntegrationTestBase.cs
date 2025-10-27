@@ -3,18 +3,18 @@
     [TestClass]
     public abstract class IntegrationTestBase
     {
-        protected CustomWebApplicationFactory Factory;
-        protected HttpClient Client;
+        protected static CustomWebApplicationFactory Factory;
+        protected static HttpClient Client;
 
-        [TestInitialize]
-        public void Init()
+        [ClassInitialize(InheritanceBehavior.BeforeEachDerivedClass)]
+        public static void Init(TestContext testContext)
         {
             Factory = new CustomWebApplicationFactory();
             Client = Factory.CreateClient();
         }
 
-        [TestCleanup]
-        public void Cleanup()
+        [ClassCleanup(ClassCleanupBehavior.EndOfClass)]
+        public static void Cleanup()
         {
             Client?.Dispose();
             Factory?.Dispose();
