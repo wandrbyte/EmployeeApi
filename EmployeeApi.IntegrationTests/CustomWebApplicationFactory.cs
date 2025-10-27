@@ -22,12 +22,7 @@ namespace EmployeeApi.IntegrationTests
                 services.AddDbContext<AppDbContext>(options =>
                 {
                     options.UseInMemoryDatabase("memory");
-                });
-
-                // Ensure database is created
-                var sp = services.BuildServiceProvider();
-                using var scope = sp.CreateScope();
-                
+                });                
             });
         }
 
