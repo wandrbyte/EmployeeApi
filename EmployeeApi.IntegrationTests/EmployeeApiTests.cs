@@ -37,7 +37,7 @@ namespace EmployeeApi.IntegrationTests
             var response = await Client.GetFromJsonAsync<List<Employee>>("api/employees");
 
             Assert.IsNotNull(response);
-            Assert.IsTrue(response.Count == 0); //breaking tests to check for CI
+            Assert.IsTrue(response.Count > 0);
         }
 
         [TestMethod]
